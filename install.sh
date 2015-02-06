@@ -13,7 +13,6 @@ ACCESS_TOKEN='<access_token>'
 # Wrapping it in function helps with that.
 download_finished () {
 
-echo '=> Installing closeheat toolkit.'
 # We will install a closheat npm package and set up your ~/.closeheat config
 # file with your access token.
 
@@ -23,18 +22,19 @@ set -u
 # Let's display everything on stderr.
 exec 1>&2
 
+echo '=> Installing closeheat toolkit.'
 # Check if npm exists.
 command -v npm >/dev/null && continue || {
   cat <<"EOF"
 
-  Node Package Manager (npm) missing.
+   Node Package Manager (npm) missing.
 
-    The best way to install npm is to install node.js.
-    npm is part of that package.
+     The best way to install npm is to install node.js.
+     npm is part of that package.
 
-  Download node.js installer:
+   Download node.js installer:
 
-    http://nodejs.org
+     http://nodejs.org
 
 EOF
 exit 1;
@@ -48,11 +48,20 @@ echo '     npm install -g closeheat'
 # npm install -g closeheat
 echo "   closeheat npm package installed."
 
-touch ~/.closeheat
-echo "{\n  \"access_token\": \"$ACCESS_TOKEN\"\n}" > ~/.closeheat
+if [ ! -d ~/.closeheat ];
+then
+  mkdir ~/.closeheat
+fi
+
+
+if [ ! -f ~/.closeheat/config.json ];
+then
+  touch ~/.closeheat/config.json
+  echo "{\n  \"access_token\": \"$ACCESS_TOKEN\"\n}" > ~/.closeheat/config.json
+fi
 
 echo
-echo "   closeheat configuration saved to $HOME/.closeheat"
+echo "   closeheat configuration saved to $HOME/.closeheat/config.json"
 
 echo
 echo "Installation successful."
