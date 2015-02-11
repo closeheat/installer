@@ -45,7 +45,7 @@ echo '   Installing closeheat npm package...'
 echo '     npm install -g closeheat'
 # Try to install without sudo
 # Will try with sudo if fails later
-# npm install -g closeheat
+npm install -g closeheat
 echo "   closeheat npm package installed."
 
 if [ ! -d ~/.closeheat ];
