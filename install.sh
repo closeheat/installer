@@ -42,10 +42,15 @@ exit 1;
 
 echo
 echo '   Installing closeheat npm package...'
+echo '   (it will take around 1 minute)'
+echo
 echo '     npm install -g closeheat'
 # Try to install without sudo
 # Will try with sudo if fails later
 npm install -g closeheat
+echo
+echo "------------------------"
+echo
 echo "   closeheat npm package installed."
 
 if [ ! -d ~/.closeheat ];
@@ -61,24 +66,22 @@ then
 fi
 
 echo
-echo "   closeheat configuration saved to $HOME/.closeheat/config.json"
+echo "   configuration saved to $HOME/.closeheat/config.json"
 
 echo
 echo "Installation successful."
 echo "------------------------"
+echo
+echo "  running 'closeheat apps'"
+
+closeheat apps
 
 cat <<"EOF"
 
-Your list of apps deployed to closeheat:
-
-  * getgymnast - last deployed 10 minutes ago.
-    Develop quickly with:
-    git clone git@github.com:ryzaskaciukas/getgymnast.git && cd getgymnast && closeheat
-
 To create a new app:
 
-  $ closeheat create ~/awesome_app
-  $ cd ~/awesome_app
+  $ closeheat create awesome_app
+  $ cd awesome_app
   $ closeheat
 
 EOF
