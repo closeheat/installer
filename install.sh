@@ -40,19 +40,6 @@ EOF
 exit 1;
 }
 
-echo
-echo '   Installing closeheat npm package...'
-echo '   (it will take around 1 minute)'
-echo
-echo '     npm install -g closeheat'
-# Try to install without sudo
-# Will try with sudo if fails later
-npm install -g closeheat
-echo
-echo "------------------------"
-echo
-echo "   closeheat npm package installed."
-
 if [ ! -d ~/.closeheat ];
 then
   mkdir ~/.closeheat
@@ -63,28 +50,24 @@ if [ ! -f ~/.closeheat/config.json ];
 then
   touch ~/.closeheat/config.json
   echo "{\n  \"access_token\": \"$ACCESS_TOKEN\"\n}" > ~/.closeheat/config.json
+
+  echo
+  echo "   configuration saved to $HOME/.closeheat/config.json"
 fi
 
 echo
-echo "   configuration saved to $HOME/.closeheat/config.json"
-
+echo '   Installing closeheat npm package...'
+echo '   (it will take around 1 minute)'
 echo
-echo "Installation successful."
+echo '     npm install -g closeheat'
+echo
+echo '   If it fails, try to install it with "sudo npm install -g closeheat".'
+npm install -g closeheat
+echo
 echo "------------------------"
 echo
-echo "  running 'closeheat apps'"
-
-closeheat apps
-
-cat <<"EOF"
-
-To create a new app:
-
-  $ closeheat create awesome_app
-  $ cd awesome_app
-  $ closeheat
-
-EOF
+echo "   closeheat npm package installed."
+echo "   Scroll up to find out how to use it!"
 
 trap - EXIT
 }
