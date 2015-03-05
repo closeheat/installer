@@ -62,6 +62,7 @@ echo
 echo '     sudo npm install -g closeheat'
 echo
 echo '   Installing with sudo because we need to install it with -g flag (global).'
+echo '   If it fails or you have a non-standard setup, try to run without sudo: npm install -g closeheat'
 sudo npm install -g closeheat
 echo
 echo "------------------------"
