@@ -59,10 +59,10 @@ echo
 echo '   Installing closeheat npm package...'
 echo '   (it will take around 1 minute)'
 echo
-echo '     npm install -g closeheat'
+echo '     sudo npm install -g closeheat'
 echo
-echo '   If it fails, try to install it with "sudo npm install -g closeheat".'
-npm install -g closeheat
+echo '   Installing with sudo because we need to install it with -g flag (global).'
+sudo npm install -g closeheat
 echo
 echo "------------------------"
 echo
